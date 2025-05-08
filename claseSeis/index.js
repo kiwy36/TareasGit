@@ -1,13 +1,3 @@
-const nuevoElemento = document.getElementById('elemento').textContent = `nuevo elemento`//agrega elementos
-const nuevasComidas = ['pizza','empanadas','milanesas']
-/*
-let resultado = ''; // Variable para almacenar todas las comidas
-
-for (let i = 0; i < nuevasComidas.length; i++) {
-    resultado += `comida nueva: ${nuevasComidas[i]}\n`;
-}
-
-document.getElementById('nuevacomida').textContent = `resultado`;*/
 //cambios usando el dom
 document.querySelector('img').src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2nC2Q13MbGzC-ncnqIqsA4Vs4DVDXGU6TaA&s'
 document.querySelector('img').height=250
