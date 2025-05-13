@@ -1,90 +1,145 @@
-const $form = document.querySelector('form');
-// Previene que el form se submittee, y nos permite quedarnos en la misma pagina
-$form.addEventListener('submit', function(event){
-    event.preventDefault();
-    return false;
+function calcularPromedio(numeros){
+    let acumulador = 0 ;
+    for(let i=0; i<numeros.length;i++){
+        acumulador += numeros[i];
+    }
+    return acumulador/numeros.length
+}
+const $calcularPromedioNotas = document.querySelector('#calcular-promedio-notas')
+$calcularPromedioNotas.addEventListener('click',function(){
+    const $notas = document.querySelectorAll('.nota');
+    const notas = [];
+    for(let i=0; i< $notas.length;i++){
+        notas.push(Number($notas[i].value))
+        const promedio = calcularPromedio(notas);
+        document.querySelector('#resultado-notas').textContent=Math.round(promedio);
+    }
+})
+const $calcularPromedioAsistencias = document.querySelector('#calcular-asistencias')
+$calcularPromedioAsistencias.addEventListener('click',function(){
+    const $asistencias = document.querySelectorAll('.asistencia');
+    const asistencias = [];
+    for(let i=0; i< $asistencias.length;i++){
+        asistencias.push(Number($asistencias[i].value))
+        const promedio = calcularPromedio(asistencias);
+        document.querySelector('#resultado-asistencias').textContent=Math.round(promedio);
+    }
+})
+
+//fomularios no sumiteables
+const $formNotas = document.querySelector('#form-notas');
+$formNotas.addEventListener('submit',function(e){
+    e.preventDefault();
+});
+const $formAsistencias = document.querySelector('#form-asistencias');
+$formAsistencias.addEventListener('submit',function(e){
+    e.preventDefault();
+});
+//tarea:
+//HACER Lo mismo con promedio con salarios de grupos familiares
+//preguntar grupo familiar y crear inputs por usuarios
+//calcular el promedio de valores
+//agregar boton reset
+//agregar opcion para borrar un input
+document.querySelector('#generar-inputs').addEventListener('click', function () {
+    const cantidad = Number(document.querySelector('#cantidad-familiares').value);
+    const contenedor = document.querySelector('#contenedor-salarios');
+    
+    contenedor.innerHTML = ''; // Limpiar antes de generar nuevos inputs
+
+    for (let i = 0; i < cantidad; i++) {
+        const div = document.createElement('div');
+        div.classList.add('salario-item');
+
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min=1;
+        input.classList.add('salario');
+        input.placeholder = `Salario del familiar ${i + 1}`;
+
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'X';
+        botonEliminar.classList.add('eliminar-salario');
+        botonEliminar.addEventListener('click', function () {
+            div.remove();
+        });
+
+        div.appendChild(input);
+        div.appendChild(botonEliminar);
+        contenedor.appendChild(div);
+    }
+});
+document.querySelector('#calcular-promedio-salarios').addEventListener('click', function () {
+    const $salarios = document.querySelectorAll('.salario');
+    const salarios = Array.from($salarios).map(salario => Number(salario.value) || 0);
+    document.querySelector('#resultado-salarios').textContent = Math.round(calcularPromedio(salarios));
+});
+document.querySelector('#reset-salarios').addEventListener('click', function () {
+    document.querySelector('#contenedor-salarios').innerHTML = ''; // Elimina todos los inputs
+    document.querySelector('#resultado-salarios').textContent = ''; // Borra el resultado
 });
 
-const cantidadDeIntegrantes = Math.max(1, prompt('Ingresa la cantidad de integrantes de tu grupo familiar'));
 
-for(let i = 1; i <= cantidadDeIntegrantes; i++){
-    const $input = document.createElement('input');
-    $input.type = 'number';
-    $input.name = `salario-${i}`;
-    $input.id = $input.name;
-    $input.placeholder = `Salario ${i}`;
+////tarea clase
+//const cantidadIntegrantes = Number(prompt('Número de integrantes'));
+document.querySelector('#formulario-integrantes').addEventListener('submit',function(event){
+    event.preventDefault();
+    const cantidadIntegrantes = Number(document.querySelector('#cantidad-integrantes').value)
+    for (let i = 0; i < cantidadIntegrantes; i++) {
+        const idIntegrante = 'integrante'+i
 
-    const $botonEliminar = document.createElement('button');
-    $botonEliminar.id = `boton-borrar-${i}`;
-    $botonEliminar.textContent = 'Eliminar integrante';
-    $botonEliminar.className = 'boton-para-eliminar-integrante';
+        const $label = document.createElement('label');
+        $label.textContent = 'Salario del integrante ' + (i + 1);
+        $label.htmlFor= idIntegrante
 
-    if(i > 1){
-        document.querySelector('body').appendChild(document.createTextNode('\xA0'));
-        document.querySelector('body').appendChild(document.createTextNode('\xA0'));
-        document.querySelector('body').appendChild(document.createTextNode('\xA0'));
-        document.querySelector('body').appendChild(document.createTextNode('\xA0'));
-        document.querySelector('body').appendChild(document.createTextNode('\xA0'));
-        document.querySelector('body').appendChild(document.createTextNode('\xA0'));
-    }
-    document.querySelector('body').appendChild($input);
-    document.querySelector('body').appendChild($botonEliminar);
-}
+        const $input = document.createElement('input');
+        $input.id=idIntegrante;
+        $input.className = 'integrante'
+        $input.type = 'number';
+        $input.min = 0;
+        
+        const $br = document.createElement('br');
+        const $removerIntegrante = document.createElement('button')
+        $removerIntegrante.textContent = 'X';
+        $removerIntegrante.addEventListener('click',function(){
+            $label.remove();
+            $input.remove();
+            $removerIntegrante.remove();
+            $br.remove();
+        })
 
-
-const $botonCalcular = document.createElement('button');
-$botonCalcular.id = 'boton-1';
-$botonCalcular.textContent = 'Calcular';
-const $botonRecargar = document.createElement('button');
-$botonRecargar.id = 'boton-2';
-$botonRecargar.textContent = 'Recargar Pagina';
-
-const $myDiv1 = document.createElement('div');
-$myDiv1.id = 'div-1';
-$myDiv1.innerHTML = '<p>\n</p>';
-document.querySelector('body').appendChild($myDiv1);
-document.querySelector('body').appendChild($botonCalcular);
-document.querySelector('body').appendChild($botonRecargar);
-
-
-
-const $paragraph = document.createElement('p');
-$paragraph.id = 'promedio';
-document.querySelector('body').appendChild($paragraph);
-
-function manejarClickCalcular(){
-    let suma = 0;
-    for(let i = 0; i < document.querySelectorAll('input').length; i++){
-        suma += Number(document.querySelectorAll('input')[i].value);
+        $integrantes.appendChild($label);
+        $integrantes.appendChild($input);
+        $integrantes.appendChild($br);
+        $integrantes.appendChild($removerIntegrante);
     }
 
-    const calculo = `El promedio de los salarios de tu grupo familiar es igual a ${suma / document.querySelectorAll('input').length}`;
-    document.querySelector('#promedio').textContent = calculo; 
-}
+})
+const $integrantes = document.querySelector('#integrantes');
+const $contenedorResultado = document.querySelector('#contenedor-resultado');
+$contenedorResultado.style.display= 'none'
 
-const $calcular = document.querySelector('#boton-1');
-$calcular.addEventListener('click', manejarClickCalcular);
+document.querySelector('#calcularPromedio').addEventListener('click',function(){
+    const $mensualidad = document.querySelectorAll('#integrantes input[type="number"]');
+    const mensualidad =[];
+    for (let i = 0; i < $mensualidad.length; i++) {
+        mensualidad.push(Number($mensualidad[i].value))
+    }
+    const promedio = calcularPromedio(mensualidad);
+    const $promedio = document.querySelector('#promedio-m')
+    $promedio.textContent = promedio;
+    $contenedorResultado.style.display='';
+    
+})
+document.querySelector('#recargar').addEventListener('click', function(){
+    window.location.reload();
+});
 
-function manejarClickRecargar(){
-    location.reload();
-}
-
-const $recargar = document.querySelector('#boton-2');
-$recargar.addEventListener('click', manejarClickRecargar);
-
-
-function manejarClickEliminar(event){
-    // console.log(event.target.id.split('-')[2]);
-    // Para que funcione, el formato del id de $botonEliminar tiene que ser el siguiente: boton-borrar-${i}
-    const index = Number(event.target.id.split('-')[2]);
-
-    const $input = document.getElementById(`salario-${index}`);
-    const $boton = document.getElementById(`boton-borrar-${index}`);
-
-    $input.remove();
-    $boton.remove();
-}
-
-for(let i = 1; i <= cantidadDeIntegrantes; i++){
-    document.querySelector(`#boton-borrar-${i}`).addEventListener('click', manejarClickEliminar);
-}
+//aqui va la funcion pero ya esta mas arriba
+/*function calcularPromedio(numeros){
+    let acumulador = 0 ;
+    for(let i=0; i<numeros.length;i++){
+        acumulador += numeros[i];
+    }
+    return acumulador/numeros.length
+}*/

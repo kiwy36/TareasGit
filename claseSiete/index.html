@@ -2,10 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/svg+xml" href="https://i.ibb.co/jvkzfpt8/kiwi.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Repositorio de codigo para re utilizacion o algo asi">
+    <meta name="author" content="Wittner Kevin">
+    <meta name="keywords" content="libreria, repositorio, la wea fome, desarrollador web, wittner, kevin, wittner kevin, frontend, portfolio, React, JavaScript, proyectos, habilidades, librerías, inteligencia artificial,ia , base de datos, experiencia, responsive, retrocompatible, 2023,2024, freelance, económico y rentable">
+    <title>Tarea</title>
+</head>
 </head>
 <body>
+    <form id="form-notas">
+        <h1>promedio de notas</h1>
+        <input type="number" placeholder="ingresa un numero" class="nota">
+        <input type="number" placeholder="ingresa un numero" class="nota">
+        <input type="number" placeholder="ingresa un numero" class="nota">
+        <input type="number" placeholder="ingresa un numero" class="nota">
+        <button id="calcular-promedio-notas">calcular</button>
+        <p>el promedio es <span id="resultado-notas"><!-- --></span></p>
+    </form>
+    
+    <form id="form-asistencias">
+        <h1>promedio de asistencias</h1>
+        <input type="number" placeholder="ingresa asistencias" class="asistencia">
+        <input type="number" placeholder="ingresa asistencias" class="asistencia">
+        <input type="number" placeholder="ingresa asistencias" class="asistencia">
+        <input type="number" placeholder="ingresa asistencias" class="ssistencia">
+        <button id="calcular-asistencias">calcular</button>
+        <p>el promedio de asistencias es <span id="resultado-asistencias"><!-- --></span></p>
+    </form>
+    <!--tarea-->
+    <form id="form-salarios">
+        <h1>Promedio de Salarios Familiares</h1>
+        <label for="cantidad-familiares">Cantidad de familiares:</label>
+        <input type="number" id="cantidad-familiares" min="1">
+        <button type="button" id="generar-inputs">Generar</button>
+        <div id="contenedor-salarios"></div>
+        <button type="button" id="calcular-promedio-salarios">Calcular</button>
+        <button type="button" id="reset-salarios">Reset</button>
+        <p>El promedio de salarios es <span id="resultado-salarios"></span></p>
+    </form>
+    <!--tarea en clase-->
+    <h1>Tarea de promedios en clase</h1>
+    <form id="formulario-integrantes">
+        <label for="cantidad-integrantes">ingresa numero de integrantes</label>
+        <input type="number" id="cantidad-integrantes"/>
+        <button>siguiente</button>
+    </form>
+    <div id="integrantes">
+        <!---->
+    </div>
+        <br>
+        <button id="calcularPromedio">Calcular promedio</button>
+        <button id="recargar">reset</button>
+        <p id="contenedor-resultado">el promedio de mensaulidad es : <span id="promedio-m"><!-- --></span></p>
     <script src="./index.js"></script>
 </body>
 </html>
