@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <h1>Clase 8</h1>
+    <form id="form-integrantes">
+        <label for="cantidad-integrantes">ingresa numero de integrantes :</label>
+        <br>
+        <input type="number" id="cantidad-integrantes" min="0" max="50"/>
+        <br>
+        <button>siguiente</button>
+    </form>
     <div id="integrantes">
         <!-- -->
     </div>
+    <button id="calcular">calcular promedio</button>
+    <br>
+    <p id="contenedorResultado">El promedio de salarios es: <span id="promedio"><!----></span></p>
+    <br>
+    <button id="resetear">Resetear todo</button>
     <script src="./index.js"></script>
 </body>
 </html>
