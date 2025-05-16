@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de GitHub</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header>
+    <h1>Guía Práctica de GitHub</h1>
+    <nav>
+      <ul>
+        <li><a href="#uso-basico">Uso Básico</a></li>
+        <li><a href="#branches">Branches y Versiones</a></li>
+        <li><a href="#colaboracion">Colaboración y Contribución</a></li>
+        <li><a href="#automation">Automatización y Despliegue</a></li>
+        <li><a href="#seguridad">Seguridad y Gestión de Código</a></li>
+        <li><a href="#documentacion">Documentación y Seguimiento</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="uso-basico">
+      <h2>1. Uso Básico de GitHub</h2>
+      <ol>
+        <li><strong>Crear cuenta:</strong> Regístrate en <a href="https://github.com">github.com</a>.
+          <p class="explain">Implica tener un perfil público donde se mostrarán tus repositorios y contribuciones. Ten en cuenta usar un nombre y correo profesionales.</p>
+        </li>
+        <li><strong>Instalar Git:</strong> Descarga e instala Git en tu máquina (https://git-scm.com).
+          <p class="explain">Git es la herramienta de control de versiones que usarás localmente. Asegúrate de instalar la última versión compatible con tu OS.</p>
+        </li>
+        <li><strong>Configurar Git:</strong>
+          <pre><code>git config --global user.name "Tu Nombre"
+git config --global user.email "tu@correo.com"</code></pre>
+          <p class="explain">Estos datos se enlazarán a los commits que hagas. Recomendable usar el mismo correo que en GitHub para evitar conflictos.</p>
+        </li>
+        <li><strong>Inicializar repositorio local:</strong>
+          <pre><code>git init</code></pre>
+          <p class="explain">Crea una carpeta oculta <code>.git</code> que gestionará las versiones. Ten cuidado al inicializar en carpetas grandes sin revisar.</p>
+        </li>
+        <li><strong>Agregar archivos:</strong>
+          <pre><code>git add .</code></pre>
+          <p class="explain">Selecciona qué cambios incluir en el próximo commit. Usa <code>git add archivo</code> para más control.</p>
+        </li>
+        <li><strong>Commit:</strong>
+          <pre><code>git commit -m "Mensaje descriptivo"</code></pre>
+          <p class="explain">Guarda el estado actual. Un mensaje claro ayuda a entender el historial. Sigue convenciones (imperativo, breve).</p>
+        </li>
+        <li><strong>Conectar a remoto:</strong>
+          <pre><code>git remote add origin https://github.com/usuario/repositorio.git</code></pre>
+          <p class="explain">Vincula tu repo local con GitHub. Origin es un alias común. Verifica la URL antes de subir.</p>
+        </li>
+        <li><strong>Enviar (push):</strong>
+          <pre><code>git push -u origin main</code></pre>
+          <p class="explain">Sube los commits a GitHub. El flag <code>-u</code> establece la rama por defecto para futuros <code>git push</code>.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="branches">
+      <h2>2. Branches y Versiones</h2>
+      <p>Los <em>branches</em> permiten trabajar en funciones distintas sin afectar la rama <code>main</code>:</p>
+      <ul>
+        <li><strong>Crear branch:</strong> <code>git checkout -b nombre-rama</code>
+          <p class="explain">Crea y cambia a la nueva rama en un solo paso. Útil para aislar features o correcciones.</p>
+        </li>
+        <li><strong>Cambiar branch:</strong> <code>git checkout nombre-rama</code>
+          <p class="explain">Mueve tu HEAD a otra rama. Asegúrate de commitear antes para no perder cambios.</p>
+        </li>
+        <li><strong>Fusionar (merge):</strong> Desde <code>main</code>, <code>git merge nombre-rama</code>
+          <p class="explain">Integra cambios de la rama al main. Puede generar conflictos que habrá que resolver manualmente.</p>
+        </li>
+        <li><strong>Eliminar branch:</strong> <code>git branch -d nombre-rama</code>
+          <p class="explain">Borra la rama local ya fusionada. Usa <code>-D</code> para forzar la eliminación si hay cambios no fusionados.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="colaboracion">
+      <h2>3. Colaboración y Contribución</h2>
+      <p>Para colaborar en proyectos de terceros:</p>
+      <ol>
+        <li><strong>Fork:</strong> Crea tu copia del repositorio.
+          <p class="explain">Mantienes tu proyecto independiente; no interferirás con el original hasta que envíes PR.</p>
+        </li>
+        <li><strong>Clonar tu fork:</strong> <code>git clone url-de-tu-fork</code>
+          <p class="explain">Descarga tu réplica local. Puedes trabajar desconectado y sincronizar luego.</p>
+        </li>
+        <li><strong>Crear branch de trabajo:</strong> <code>git checkout -b feature-x</code>
+          <p class="explain">Organiza cada feature o bugfix en ramas separadas para facilitar revisiones.</p>
+        </li>
+        <li><strong>Commit y push:</strong> Realiza commits locales y sube la rama: <code>git push origin feature-x</code>
+          <p class="explain">Mantén commits limpios y centrados. Evita subir ramas con historial confuso.</p>
+        </li>
+        <li><strong>Pull Request:</strong> En GitHub, solicita merge en el repo original.
+          <p class="explain">Describe tus cambios, referencias issues y solicita revisiones. Los maintainers harán feedback.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="automation">
+      <h2>4. Automatización y Despliegue</h2>
+      <p>GitHub Actions te permite crear workflows:</p>
+      <ul>
+        <li><strong>Archivo de workflow:</strong> <code>.github/workflows/ci.yml</code>
+          <p class="explain">Define qué sucede en eventos como pushes o PR. Usa YAML; cuidado con la indentación.</p>
+        </li>
+        <li><strong>Eventos:</strong> <code>push</code>, <code>pull_request</code>, etc.
+          <p class="explain">Determinan cuándo se dispara el pipeline; usar varios eventos mejora cobertura.</p>
+        </li>
+        <li><strong>Jobs:</strong> Pasos para tests, build y deploy.
+          <p class="explain">Cada job corre en un runner separado; puedes paralelizarlos para eficiencia.</p>
+        </li>
+      </ul>
+      <p>Ejemplo mínimo:</p>
+      <pre><code>name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install && npm test</code></pre>
+      <p class="explain">Este workflow instala dependencias y corre tests. Puedes expandirlo con deploy y lint.</p>
+    </section>
+
+    <section id="seguridad">
+      <h2>5. Seguridad y Gestión de Código</h2>
+      <ul>
+        <li><strong>Protección de ramas:</strong> Configura reglas en Settings > Branch Protection.
+          <p class="explain">Obliga reviews antes de merge y evita merges forzados. Clave para proyectos críticos.</p>
+        </li>
+        <li><strong>Scan de vulnerabilidades:</strong> Activa Dependabot y CodeQL.
+          <p class="explain">Detecta dependencias inseguras y errores de código. Automatiza alertas y PRs de actualización.</p>
+        </li>
+        <li><strong>Secretos:</strong> Usa Settings > Secrets para credenciales.
+          <p class="explain">Nunca pongas tokens o claves en el código. Los secretos están encriptados y solo accesibles en Actions.</p>
+        </li>
+        <li><strong>Revisiones de código:</strong> Solicita reviews obligatorias.
+          <p class="explain">Aumenta la calidad y evita errores. Define un mínimo de aprobaciones antes de merge.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="documentacion">
+      <h2>6. Documentación y Seguimiento</h2>
+      <ul>
+        <li><strong>README:</strong> Describe el proyecto y cómo empezar.
+          <p class="explain">Es la primera impresión. Incluye instalación, uso y ejemplos básicos.</p>
+        </li>
+        <li><strong>Issues:</strong> Reporta bugs y planifica features.
+          <p class="explain">Manténlos claros y etiquetados (bug, enhancement). Prioriza y asigna responsables.</p>
+        </li>
+        <li><strong>Projects:</strong> Tableros Kanban para gestionar tareas.
+          <p class="explain">Visualiza el estado de cada tarea y flujo de trabajo. Útil para equipos y roadmaps.</p>
+        </li>
+        <li><strong>Wiki:</strong> Documentación extendida.
+          <p class="explain">Para guías de desarrollo, diagramas y políticas. Manténlo sincronizado con el código.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 kiki</p>
+  </footer>
+</body>
