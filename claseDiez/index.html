@@ -1,48 +1,146 @@
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guía Interactiva de JavaScript</title>
-  <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva de JavaScript</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <body>
-  <header>
-    <h1>Guía Interactiva de JavaScript - Parte 1</h1>
-    <p>Funciones, Declaraciones con <code>let</code> y <code>var</code>, y Hoisting</p>
-  </header>
+    <header>
+        <h1>Guía Interactiva de JavaScript - Parte 1</h1>
+        <p>Funciones, Declaraciones con <code>let</code> y <code>var</code>, y Hoisting</p>
+    </header>
+    <!-- Barra de navegación -->
+    <nav class="nav-temas">
+        <ul>
+        <li><a href="#funcioneso">Funciones</a></li>
+        <li><a href="#letVara">Let/Var</a></li>
+        <li><a href="#hoistinga">Hoisting</a></li>
+        <li><a href="#eventosa">Eventos</a></li>
+        <li><a href="#constsa">Const</a></li>
+        <li><a href="#eventPropa">Event Properties</a></li>
+        <li><a href="#firstClassa">First Class</a></li>
+        <li><a href="#anonimasa">Anónimas</a></li>
+        <li><a href="#funcParama">Funciones como Parámetros</a></li>
+        <li><a href="#funcVariablea">Funciones en Variables</a></li>
+        <li><a href="#formSubmito">Form Submit</a></li>
+        <li><a href="#multiEvento">Multi Eventos</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="funcioneso" class="tema">
+            <h2>Armado de Funciones</h2>
+            <p>
+            En JavaScript, una función es un bloque de código diseñado para realizar una tarea específica. Puedes pensar en una función como una pequeña "máquina" que recibe una entrada, realiza una operación, y devuelve una salida. Las funciones son fundamentales en JavaScript porque permiten estructurar el código, reutilizar lógica, evitar la repetición, y mejorar la organización y el mantenimiento de los programas. Existen principalmente dos tipos de funciones en JS: las funciones declaradas y las funciones expresadas. Las declaradas usan la palabra clave <code>function</code> y tienen un nombre propio; son "hoisted", lo que significa que se pueden usar antes de su definición en el código. Por otro lado, las funciones expresadas son funciones anónimas asignadas a una variable, y no pueden usarse antes de ser definidas. Es importante entender que las funciones pueden aceptar parámetros, devolver valores, ser pasadas como argumentos a otras funciones, y mucho más. Usar correctamente funciones mejora la legibilidad y eficiencia del código. Precauciones: no abusar de funciones anidadas que dificulten la lectura, y tener cuidado con el ámbito de variables que se usan dentro de ellas. Las funciones son ciudadanos de primera clase en JavaScript, lo que significa que se pueden usar como cualquier otro valor.
+            </p>
+            <button onclick="mostrarEjemplo('funciones')">Ver ejemplos</button>
+            <div id="funciones" class="contenido oculto"></div>
+        </section>
 
-  <section class="tema">
-    <h2>Armado de Funciones</h2>
-    <p>
-      En JavaScript, una función es un bloque de código diseñado para realizar una tarea específica. Puedes pensar en una función como una pequeña "máquina" que recibe una entrada, realiza una operación, y devuelve una salida. Las funciones son fundamentales en JavaScript porque permiten estructurar el código, reutilizar lógica, evitar la repetición, y mejorar la organización y el mantenimiento de los programas. Existen principalmente dos tipos de funciones en JS: las funciones declaradas y las funciones expresadas. Las declaradas usan la palabra clave <code>function</code> y tienen un nombre propio; son "hoisted", lo que significa que se pueden usar antes de su definición en el código. Por otro lado, las funciones expresadas son funciones anónimas asignadas a una variable, y no pueden usarse antes de ser definidas. Es importante entender que las funciones pueden aceptar parámetros, devolver valores, ser pasadas como argumentos a otras funciones, y mucho más. Usar correctamente funciones mejora la legibilidad y eficiencia del código. Precauciones: no abusar de funciones anidadas que dificulten la lectura, y tener cuidado con el ámbito de variables que se usan dentro de ellas. Las funciones son ciudadanos de primera clase en JavaScript, lo que significa que se pueden usar como cualquier otro valor.
-    </p>
-    <button onclick="mostrarEjemplo('funciones')">Ver ejemplos</button>
-    <div id="funciones" class="contenido oculto"></div>
-  </section>
+        <section id="letVara"" class="tema">
+            <h2>Uso de <code>let</code> y <code>var</code></h2>
+            <p>
+            En JavaScript, <code>let</code> y <code>var</code> son dos palabras clave utilizadas para declarar variables, pero su comportamiento es bastante diferente y entender estas diferencias es fundamental para evitar errores comunes. <code>let</code> se introdujo en ECMAScript 6 (ES6) y permite declarar variables con un ámbito de bloque, lo que significa que sólo existen dentro del bloque donde se declararon (como una función, un bucle, o una condición). Esto mejora la seguridad y previsibilidad del código. Por ejemplo, declarar una variable con <code>let</code> dentro de un bucle garantiza que esa variable no afectará al código fuera de ese bucle. En cambio, <code>var</code> declara variables con un ámbito de función, es decir, la variable existe en toda la función donde fue declarada, sin importar si está dentro de un bloque. Esto puede llevar a comportamientos inesperados y errores difíciles de detectar. Además, <code>var</code> permite la redeclaración dentro del mismo ámbito, lo cual puede sobreescribir valores sin advertencia. Por estas razones, se recomienda usar <code>let</code> o <code>const</code> en lugar de <code>var</code>. Comprender las diferencias entre <code>let</code> y <code>var</code> es esencial para escribir código limpio y mantener un control adecuado del flujo de datos.
+            </p>
+            <button onclick="mostrarEjemplo('letVar')">Ver ejemplos</button>
+            <div id="letVar" class="contenido oculto"></div>
+        </section>
 
-  <section class="tema">
-    <h2>Uso de <code>let</code> y <code>var</code></h2>
-    <p>
-      En JavaScript, <code>let</code> y <code>var</code> son dos palabras clave utilizadas para declarar variables, pero su comportamiento es bastante diferente y entender estas diferencias es fundamental para evitar errores comunes. <code>let</code> se introdujo en ECMAScript 6 (ES6) y permite declarar variables con un ámbito de bloque, lo que significa que sólo existen dentro del bloque donde se declararon (como una función, un bucle, o una condición). Esto mejora la seguridad y previsibilidad del código. Por ejemplo, declarar una variable con <code>let</code> dentro de un bucle garantiza que esa variable no afectará al código fuera de ese bucle. En cambio, <code>var</code> declara variables con un ámbito de función, es decir, la variable existe en toda la función donde fue declarada, sin importar si está dentro de un bloque. Esto puede llevar a comportamientos inesperados y errores difíciles de detectar. Además, <code>var</code> permite la redeclaración dentro del mismo ámbito, lo cual puede sobreescribir valores sin advertencia. Por estas razones, se recomienda usar <code>let</code> o <code>const</code> en lugar de <code>var</code>. Comprender las diferencias entre <code>let</code> y <code>var</code> es esencial para escribir código limpio y mantener un control adecuado del flujo de datos.
-    </p>
-    <button onclick="mostrarEjemplo('letVar')">Ver ejemplos</button>
-    <div id="letVar" class="contenido oculto"></div>
-  </section>
+        <section id="hoistinga" class="tema">
+            <h2>Hoisting en Funciones</h2>
+            <p>
+            El hoisting ("elevación") es un comportamiento peculiar de JavaScript que mueve las declaraciones de funciones y variables al inicio de su contexto de ejecución (función o script), antes de que el código se ejecute. Esto significa que puedes utilizar ciertas funciones o variables antes de haberlas escrito en el código, porque JavaScript las ha "elevado" automáticamente. Sin embargo, este comportamiento no es uniforme para todas las formas de declarar. Las funciones declaradas con la palabra clave <code>function</code> son completamente hoisted, por lo que pueden ser invocadas antes de ser declaradas. Por ejemplo, una función <code>saludar()</code> puede ser llamada antes de su definición en el archivo y aún así funcionará. En cambio, las funciones expresadas (funciones anónimas asignadas a variables usando <code>var</code>, <code>let</code> o <code>const</code>) no se benefician del hoisting del mismo modo. Si intentas invocarlas antes de su definición, obtendrás un error. Esto sucede porque solo la declaración de la variable es elevada, pero no su asignación. Conocer cómo funciona el hoisting es clave para evitar errores de referencia y entender por qué algunas funciones funcionan antes de su declaración y otras no. También ayuda a mantener un código más predecible y a decidir en qué lugar del archivo ubicar tus funciones.
+            </p>
+            <button onclick="mostrarEjemplo('hoisting')">Ver ejemplos</button>
+            <div id="hoisting" class="contenido oculto"></div>
+        </section>
 
-  <section class="tema">
-    <h2>Hoisting en Funciones</h2>
-    <p>
-      El hoisting ("elevación") es un comportamiento peculiar de JavaScript que mueve las declaraciones de funciones y variables al inicio de su contexto de ejecución (función o script), antes de que el código se ejecute. Esto significa que puedes utilizar ciertas funciones o variables antes de haberlas escrito en el código, porque JavaScript las ha "elevado" automáticamente. Sin embargo, este comportamiento no es uniforme para todas las formas de declarar. Las funciones declaradas con la palabra clave <code>function</code> son completamente hoisted, por lo que pueden ser invocadas antes de ser declaradas. Por ejemplo, una función <code>saludar()</code> puede ser llamada antes de su definición en el archivo y aún así funcionará. En cambio, las funciones expresadas (funciones anónimas asignadas a variables usando <code>var</code>, <code>let</code> o <code>const</code>) no se benefician del hoisting del mismo modo. Si intentas invocarlas antes de su definición, obtendrás un error. Esto sucede porque solo la declaración de la variable es elevada, pero no su asignación. Conocer cómo funciona el hoisting es clave para evitar errores de referencia y entender por qué algunas funciones funcionan antes de su declaración y otras no. También ayuda a mantener un código más predecible y a decidir en qué lugar del archivo ubicar tus funciones.
-    </p>
-    <button onclick="mostrarEjemplo('hoisting')">Ver ejemplos</button>
-    <div id="hoisting" class="contenido oculto"></div>
-  </section>
+        <section id="eventosa" class="tema">
+            <h2>Eventos en JavaScript</h2>
+            <p>
+                Los eventos en JavaScript son acciones o sucesos que ocurren en el navegador y que pueden ser detectados y gestionados mediante código. Estos eventos pueden ser provocados por el usuario, como hacer click en un botón, mover el ratón, presionar una tecla, o pueden ser generados por el propio navegador, como la carga de una página o un cambio en el tamaño de la ventana. Manejar eventos permite hacer páginas interactivas y dinámicas, reaccionando a las acciones del usuario o cambios del entorno. Para usar eventos, se asocian funciones llamadas manejadores o listeners que se ejecutan cuando ocurre el evento. Por ejemplo, un listener para el evento `click` en un botón ejecutará cierta función cuando el usuario haga click. Es fundamental entender que hay muchos tipos de eventos y que se pueden manejar de manera individual o conjunta. Además, los eventos se propagan a través del DOM mediante fases (captura y burbuja), lo que da flexibilidad pero también complejidad. Es importante gestionar correctamente los eventos para evitar conflictos, errores o impactos en el rendimiento. Usar eventos correctamente es clave para desarrollar interfaces responsivas y accesibles.
+            </p>
+            <button onclick="mostrarEjemplo('eventos')">Ver ejemplos</button>
+            <div id="eventos" class="contenido oculto"></div>
+        </section>
 
-  <footer>
-    <p>Desarrollado por Kevin Wittner &copy; 2025</p>
-  </footer>
+        <section id="constsa" class="tema">
+            <h2>Armado de <code>const</code> en JavaScript</h2>
+            <p>
+                La palabra clave <code>const</code> en JavaScript se usa para declarar variables cuyo valor no puede ser reasignado después de su inicialización. Esto no significa que el valor sea inmutable (especialmente si es un objeto o arreglo), sino que la referencia a ese valor permanece constante. El uso de <code>const</code> ayuda a evitar errores accidentales por reasignación y promueve un código más predecible y seguro. Es ideal para valores que no deben cambiar, como configuraciones, funciones, o referencias a objetos que deben mantenerse fijas. Además, las variables declaradas con <code>const</code> tienen alcance de bloque, al igual que <code>let</code>. Esto mejora el control del scope y evita problemas relacionados con el hoisting, ya que aunque la variable está hoisted, no puede usarse antes de ser declarada (temporal dead zone). Es recomendable usar <code>const</code> siempre que sea posible, y solo usar <code>let</code> si se necesita reasignar el valor. Esto ayuda a escribir código más robusto, legible y fácil de mantener. Precaución: intentar reasignar una variable declarada con <code>const</code> genera un error en tiempo de ejecución.
+            </p>
+            <button onclick="mostrarEjemplo('consts')">Ver ejemplos</button>
+            <div id="consts" class="contenido oculto"></div>
+        </section>
 
-  <script src="./index.js"></script>
+        <section id="eventPropa" class="tema">
+            <h2>Propiedades y Métodos de Eventos (<code>event</code>)</h2>
+            <p>
+                Cuando un evento ocurre en JavaScript, el manejador recibe un objeto llamado <code>event</code> que contiene información muy valiosa sobre ese evento. Este objeto permite conocer detalles como el tipo de evento, el elemento donde ocurrió, la posición del cursor, las teclas pulsadas, y mucho más. Algunas propiedades comunes son <code>event.target</code> (el elemento que disparó el evento), <code>event.type</code> (el tipo de evento, por ejemplo, click o keydown), y métodos como <code>event.preventDefault()</code> para evitar el comportamiento predeterminado del navegador, o <code>event.stopPropagation()</code> para evitar que el evento siga propagándose. Estas herramientas permiten un control granular y preciso sobre la interacción del usuario y la lógica de la aplicación. Entender y usar correctamente el objeto <code>event</code> es esencial para crear interfaces dinámicas y con buena experiencia de usuario. Sin su manejo adecuado, se pierde la capacidad de controlar qué sucede cuando el usuario interactúa con la página, y se pueden generar comportamientos no deseados o difíciles de depurar.
+            </p>
+            <button onclick="mostrarEjemplo('eventProp')">Ver ejemplos</button>
+            <div id="eventProp" class="contenido oculto"></div>
+        </section>
+
+        <section id="firstClassa" class="tema">
+            <h2>Funciones como Ciudadanos de Primera Clase</h2>
+            <p>
+                En JavaScript, las funciones son ciudadanos de primera clase, lo que significa que pueden ser tratadas como cualquier otro valor. Pueden asignarse a variables, pasarse como argumentos, retornarse desde otras funciones y almacenarse en estructuras de datos. Esta característica es fundamental para la programación funcional y permite patrones como funciones de orden superior. Cuando decimos que son "de primera clase", implica que no hay restricciones en su uso comparado con otros tipos de datos. Por ejemplo, puedes crear un array de funciones o pasar una función como parámetro a otra función (callback). Esto permite composición funcional y abstracción poderosa. Precaución: El exceso de anidamiento puede hacer el código difícil de seguir. Es importante nombrar adecuadamente las funciones incluso cuando son asignadas a variables para mejorar la legibilidad.
+            </p>
+            <button onclick="mostrarEjemplo('firstClass')">Ver ejemplos</button>
+            <div id="firstClass" class="contenido oculto"></div>
+        </section>
+
+        <section id="anonimasa" class="tema">
+            <h2>Funciones Anónimas</h2>
+            <p>
+                Las funciones anónimas son aquellas que no tienen nombre identificador y se definen en el lugar donde se necesitan. Son comunes como argumentos de otras funciones o como IIFE (Immediately Invoked Function Expressions). Su principal ventaja es la creación de código más conciso sin poluir el ámbito con nombres innecesarios. Sin embargo, deben usarse con cuidado porque dificultan el debugging (aparecen como "anonymous" en los stack traces). Son ideales para callbacks pequeños o lógica que no necesita reutilizarse. Un patrón común es usarlas con métodos como setTimeout o addEventListener. Precaución: Evita funciones anónimas complejas (más de 5 líneas) ya que reducen la legibilidad. Considera siempre si una función nombrada sería más apropiada para ese fragmento de lógica.
+            </p>
+            <button onclick="mostrarEjemplo('anonimas')">Ver ejemplos</button>
+            <div id="anonimas" class="contenido oculto"></div>
+        </section>
+
+        <section id="funcParama" class="tema">
+            <h2>Funciones como Parámetros</h2>
+            <p>
+                Pasar funciones como parámetros permite crear abstracciones poderosas y código reutilizable. Este patrón es la base de los callbacks y funciones de orden superior como map, filter o reduce. Cuando una función acepta otra función como argumento, puede personalizar su comportamiento interno. Esto sigue el principio de inversión de control - la función llamadora delega parte de su lógica al llamador. Ejemplos comunes incluyen funciones de iteración, manejadores de eventos o controladores asíncronos. Precaución: Callbacks anidados pueden llevar a "callback hell" - considera Promises o async/await para flujos complejos. Documenta siempre la firma esperada (qué parámetros recibe y qué debe retornar) cuando esperes una función como argumento.
+            </p>
+            <button onclick="mostrarEjemplo('funcParam')">Ver ejemplos</button>
+            <div id="funcParam" class="contenido oculto"></div>
+        </section>
+
+        <section id="funcVariablea" class="tema">
+            <h2>Función Asociada a Variables</h2>
+            <p>
+                En JavaScript, las funciones pueden asignarse a variables como cualquier otro valor. Esto permite tratarlas como datos dinámicos, pasarlas como parámetros o reasignarlas según necesidades del programa. Cuando asignas una función a una variable, esta contiene una referencia a la función (no una copia), por lo que cualquier cambio afectará a todas las referencias. Este enfoque es fundamental para patrones como factories functions o estrategias dinámicas. Las funciones asignadas a variables siguen las mismas reglas de scope que las variables normales. Precaución: Al asignar métodos de objetos a variables, pierden su contexto (this) a menos que uses bind(). También evita reasignaciones frecuentes que dificulten el seguimiento del flujo. Usa nombres descriptivos incluso para variables que almacenan funciones.
+            </p>
+            <button onclick="mostrarEjemplo('funcVariable')">Ver ejemplos</button>
+            <div id="funcVariable" class="contenido oculto"></div>
+        </section>
+
+        <section id="formSubmito" class="tema">
+            <h2>Manejo de Formularios (Submit)</h2>
+            <p>
+                El evento submit en formularios es crucial para el procesamiento de datos en aplicaciones web. Se dispara cuando el usuario intenta enviar el formulario, ya sea mediante click en un botón submit o presionando Enter. Manejar correctamente este evento permite validar datos antes del envío, prevenir envíos duplicados y ejecutar envíos asíncronos (AJAX). Es esencial usar preventDefault() para evitar el envío tradicional cuando se procesan datos con JavaScript. Los formularios modernos suelen usar FormData para capturar eficientemente todos los campos. Precaución: Siempre valida tanto en cliente como en servidor. Evita lógica compleja en el handler de submit - considera separar en funciones específicas (validar, prepararDatos, enviar). Para accesibilidad, mantén los botones submit nativos y muestra feedback claro durante el proceso.
+            </p>
+            <button onclick="mostrarEjemplo('formSubmit')">Ver ejemplos</button>
+            <div id="formSubmit" class="contenido oculto"></div>
+        </section>
+
+
+        <section id="multiEvento" class="tema">
+            <h2>Cadenas de Múltiples Eventos</h2>
+            <p>
+                La gestión de múltiples eventos permite crear interacciones complejas donde acciones secuenciales deben coordinarse. Esto incluye: encadenar eventos (ej. validar después de escribir), manejar estados entre eventos, y coordinar eventos cruzados (ej. teclado y mouse). Patrones comunes incluyen: debounce (esperar a que termine una ráfaga de eventos), throttling (limitar frecuencia de ejecución), y máquinas de estados simples. Para implementaciones robustas, considera usar un patrón Observer o gestores de estado centralizado cuando muchos componentes reaccionan a los mismos eventos. Precaución: El exceso de interdependencia entre eventos hace el código difícil de depurar. Documenta claramente las relaciones entre eventos y considera diagramas de flujo para interacciones complejas. Siempre limpia listeners de eventos cuando no sean necesarios para evitar memory leaks.
+            </p>
+            <button onclick="mostrarEjemplo('multiEvent')">Ver ejemplos</button>
+            <div id="multiEvent" class="contenido oculto"></div>
+        </section>
+    </main>
+    <footer>
+        <p>Desarrollado por Kevin Wittner &copy; 2025</p>
+    </footer>
+
+    <script src="./index.js"></script>
 </body>
 </html>
