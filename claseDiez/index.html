@@ -1,0 +1,48 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Interactiva de JavaScript</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <body>
+  <header>
+    <h1>Guía Interactiva de JavaScript - Parte 1</h1>
+    <p>Funciones, Declaraciones con <code>let</code> y <code>var</code>, y Hoisting</p>
+  </header>
+
+  <section class="tema">
+    <h2>Armado de Funciones</h2>
+    <p>
+      En JavaScript, una función es un bloque de código diseñado para realizar una tarea específica. Puedes pensar en una función como una pequeña "máquina" que recibe una entrada, realiza una operación, y devuelve una salida. Las funciones son fundamentales en JavaScript porque permiten estructurar el código, reutilizar lógica, evitar la repetición, y mejorar la organización y el mantenimiento de los programas. Existen principalmente dos tipos de funciones en JS: las funciones declaradas y las funciones expresadas. Las declaradas usan la palabra clave <code>function</code> y tienen un nombre propio; son "hoisted", lo que significa que se pueden usar antes de su definición en el código. Por otro lado, las funciones expresadas son funciones anónimas asignadas a una variable, y no pueden usarse antes de ser definidas. Es importante entender que las funciones pueden aceptar parámetros, devolver valores, ser pasadas como argumentos a otras funciones, y mucho más. Usar correctamente funciones mejora la legibilidad y eficiencia del código. Precauciones: no abusar de funciones anidadas que dificulten la lectura, y tener cuidado con el ámbito de variables que se usan dentro de ellas. Las funciones son ciudadanos de primera clase en JavaScript, lo que significa que se pueden usar como cualquier otro valor.
+    </p>
+    <button onclick="mostrarEjemplo('funciones')">Ver ejemplos</button>
+    <div id="funciones" class="contenido oculto"></div>
+  </section>
+
+  <section class="tema">
+    <h2>Uso de <code>let</code> y <code>var</code></h2>
+    <p>
+      En JavaScript, <code>let</code> y <code>var</code> son dos palabras clave utilizadas para declarar variables, pero su comportamiento es bastante diferente y entender estas diferencias es fundamental para evitar errores comunes. <code>let</code> se introdujo en ECMAScript 6 (ES6) y permite declarar variables con un ámbito de bloque, lo que significa que sólo existen dentro del bloque donde se declararon (como una función, un bucle, o una condición). Esto mejora la seguridad y previsibilidad del código. Por ejemplo, declarar una variable con <code>let</code> dentro de un bucle garantiza que esa variable no afectará al código fuera de ese bucle. En cambio, <code>var</code> declara variables con un ámbito de función, es decir, la variable existe en toda la función donde fue declarada, sin importar si está dentro de un bloque. Esto puede llevar a comportamientos inesperados y errores difíciles de detectar. Además, <code>var</code> permite la redeclaración dentro del mismo ámbito, lo cual puede sobreescribir valores sin advertencia. Por estas razones, se recomienda usar <code>let</code> o <code>const</code> en lugar de <code>var</code>. Comprender las diferencias entre <code>let</code> y <code>var</code> es esencial para escribir código limpio y mantener un control adecuado del flujo de datos.
+    </p>
+    <button onclick="mostrarEjemplo('letVar')">Ver ejemplos</button>
+    <div id="letVar" class="contenido oculto"></div>
+  </section>
+
+  <section class="tema">
+    <h2>Hoisting en Funciones</h2>
+    <p>
+      El hoisting ("elevación") es un comportamiento peculiar de JavaScript que mueve las declaraciones de funciones y variables al inicio de su contexto de ejecución (función o script), antes de que el código se ejecute. Esto significa que puedes utilizar ciertas funciones o variables antes de haberlas escrito en el código, porque JavaScript las ha "elevado" automáticamente. Sin embargo, este comportamiento no es uniforme para todas las formas de declarar. Las funciones declaradas con la palabra clave <code>function</code> son completamente hoisted, por lo que pueden ser invocadas antes de ser declaradas. Por ejemplo, una función <code>saludar()</code> puede ser llamada antes de su definición en el archivo y aún así funcionará. En cambio, las funciones expresadas (funciones anónimas asignadas a variables usando <code>var</code>, <code>let</code> o <code>const</code>) no se benefician del hoisting del mismo modo. Si intentas invocarlas antes de su definición, obtendrás un error. Esto sucede porque solo la declaración de la variable es elevada, pero no su asignación. Conocer cómo funciona el hoisting es clave para evitar errores de referencia y entender por qué algunas funciones funcionan antes de su declaración y otras no. También ayuda a mantener un código más predecible y a decidir en qué lugar del archivo ubicar tus funciones.
+    </p>
+    <button onclick="mostrarEjemplo('hoisting')">Ver ejemplos</button>
+    <div id="hoisting" class="contenido oculto"></div>
+  </section>
+
+  <footer>
+    <p>Desarrollado por Kevin Wittner &copy; 2025</p>
+  </footer>
+
+  <script src="./index.js"></script>
+</body>
+</html>
