@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>formulario de transferencia</title>
+</head>
+<body>
+    <form>
+        <br>
+        <!-- Selector de cuenta origen -->
+        <label for="cuenta-desde">Desde que cuenta</label>
+        <select type="text" name="" id="cuenta-desde">
+            <option value="1">Elegir option</option>
+        </select>
+        <br>
+        <!-- Selector de cuenta destino -->
+        <label for="cuenta-hacia">Destino de cuenta</label>
+        <select type="text" name="" id="cuenta-hacia">
+            <option value="A">Elegir option</option>
+        </select>
+        <br>
+        <!-- Campo para ingresar monto a transferir -->
+        <label for="monto">Monto</label>
+        <input type="number" name="" id="monto" min="0">
+        <!-- Botón para realizar la transferencia -->
+        <input type="submit" value="Transferir"/>
+    </form>
+    <!-- Script donde se define el array de cuentas -->
+    <script type="" src="./scrip.js"></script>
+    <!-- Script principal que contiene la lógica del formulario -->
+    <script type="text/javascript" src="./index.js"></script>
+
+</body>
+</html>
