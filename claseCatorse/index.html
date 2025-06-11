@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Repaso de Objetos en JS</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Personajes</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Repaso de Objetos</h1>
-
-  <div id="personaInfo">
-    <!-- Aquí insertaremos la información de la persona -->
+  <div class="container">
+    <h1>🏰 Creador de Personajes 🏰</h1>
+    <form id="form-personaje">
+      <input type="text" id="nombre" placeholder="Nombre" required>
+      <input type="number" id="nivel" placeholder="Nivel" min="1" required>
+      <button type="submit">Crear Personaje</button>
+    </form>
+    <div id="personajes-container"></div>
   </div>
-
-  <button id="crearPersonaBtn">Crear Persona</button>
-
   <script src="script.js"></script>
 </body>
 </html>
