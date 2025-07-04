@@ -1,4 +1,9 @@
-const emojis = ['🐶', '🐱', '🦊'];
+const imagenes = [
+  './img/001.jpg',
+  './img/000.jpg',
+  './img/002.jpg'
+];
+
 let cards = [];
 let firstCard = null;
 let lockBoard = false;
@@ -8,19 +13,18 @@ document.getElementById('start').addEventListener('click', iniciarJuego);
 
 function iniciarJuego() {
   const tablero = document.getElementById('tablero');
-  tablero.innerHTML = ''; // Limpiar tablero
+  tablero.innerHTML = '';
   firstCard = null;
   lockBoard = false;
   matchedPairs = 0;
 
-  // Crear y mezclar cartas
-  cards = [...emojis, ...emojis].sort(() => 0.5 - Math.random());
+  // ✅ Mezclar duplicados
+  cards = [...imagenes, ...imagenes].sort(() => 0.5 - Math.random());
 
-  // Crear elementos de cartas
-  cards.forEach((emoji, index) => {
+  cards.forEach((url, index) => {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.dataset.emoji = emoji;
+    card.dataset.url = url; // guardamos la URL para compararlas
     card.dataset.index = index;
 
     card.addEventListener('click', () => manejarClick(card));
@@ -31,26 +35,32 @@ function iniciarJuego() {
 function manejarClick(card) {
   if (lockBoard || card.classList.contains('revealed')) return;
 
-  card.textContent = card.dataset.emoji;
+  // ✅ Crear imagen y mostrarla
+  const img = document.createElement('img');
+  img.src = card.dataset.url;
+  img.alt = 'carta';
+  img.classList.add('imagen-carta');
+  card.innerHTML = '';
+  card.appendChild(img);
   card.classList.add('revealed');
 
   if (!firstCard) {
     firstCard = card;
   } else {
     const segunda = card;
-    if (firstCard.dataset.emoji === segunda.dataset.emoji) {
+    if (firstCard.dataset.url === segunda.dataset.url) {
       firstCard = null;
       matchedPairs++;
-      if (matchedPairs === emojis.length) {
+      if (matchedPairs === imagenes.length) {
         setTimeout(() => alert("¡Ganaste! 🎉"), 300);
       }
     } else {
       lockBoard = true;
       setTimeout(() => {
+        firstCard.innerHTML = '';
+        segunda.innerHTML = '';
         firstCard.classList.remove('revealed');
         segunda.classList.remove('revealed');
-        firstCard.textContent = '';
-        segunda.textContent = '';
         firstCard = null;
         lockBoard = false;
       }, 1000);
