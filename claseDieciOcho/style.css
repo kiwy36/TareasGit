@@ -61,3 +61,12 @@ button:hover {
   border-radius: 10px;
   pointer-events: none;
 }
+#seleccion-dificultad {
+  margin: 20px;
+}
+
+#seleccion-dificultad button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+}

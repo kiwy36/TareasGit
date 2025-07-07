@@ -7,7 +7,16 @@
 </head>
 <body>
   <h1>Juego de Memoria</h1>
-  <button id="start">Comenzar juego</button>
+
+  <!-- Pantalla de selección de dificultad -->
+  <div id="seleccion-dificultad">
+    <p>Elegí la dificultad:</p>
+    <button onclick="elegirDificultad(3)">Fácil (3 pares)</button>
+    <button onclick="elegirDificultad(8)">Normal (8 pares)</button>
+    <button onclick="elegirDificultad(16)">Difícil (16 pares)</button>
+  </div>
+
+  <button id="start" style="display:none;">Comenzar juego</button>
   <div class="game-board" id="tablero"></div>
 
   <script src="script.js"></script>
