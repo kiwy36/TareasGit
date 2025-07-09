@@ -28,6 +28,7 @@ const dificultades = {
 };
 
 function elegirDificultad(pares) {
+  $start.style.display = 'inline-block';
   cantidadPares = pares;
   imagenes = todasLasImagenes.slice(0, pares);
 
@@ -43,16 +44,17 @@ $start.addEventListener('click', iniciarJuego);
 $reiniciar.addEventListener('click', reiniciarJuego);
 
 function iniciarJuego() {
+  
+  document.getElementById('start').style.display = 'none';
   const tablero = document.getElementById('tablero');
   tablero.innerHTML = '';
   firstCard = null;
   lockBoard = false;
   matchedPairs = 0;
 
-  // ✅ Mostrar contadores al iniciar
   $tiempo.style.display = 'block';
   $movimientos.style.display = 'block';
-  actualizarContadores(); // mostramos valores iniciales
+  actualizarContadores();
 
   cards = [...imagenes, ...imagenes].sort(() => 0.5 - Math.random());
 
@@ -67,11 +69,28 @@ function iniciarJuego() {
 
   iniciarTemporizador();
 }
+
+function iniciarTemporizador() {
+  clearInterval(temporizador);
+  temporizador = setInterval(() => {
+    tiempoRestante--;
+    actualizarContadores(); // ✅ Actualiza el DOM
+
+    if (tiempoRestante <= 0) {
+      clearInterval(temporizador);
+      if (matchedPairs < imagenes.length) {
+        mostrarFinal("lose");
+      }
+    }
+  }, 1000);
+}
+
+// ⬆️ LUEGO SIGUE: function mostrarFinal(...)
+
 function actualizarContadores() {
   $tiempo.textContent = `Tiempo restante: ${tiempoRestante}s`;
   $movimientos.textContent = `Movimientos restantes: ${movimientosRestantes}`;
 }
-
 
 function manejarClick(card) {
   if (lockBoard || card.classList.contains('revealed')) return;
@@ -84,14 +103,15 @@ function manejarClick(card) {
   card.appendChild(img);
   card.classList.add('revealed');
 
-  // 🔥 Faltaba esto:
-  movimientosRestantes--;
-  actualizarContadores(); // ← Mostramos en pantalla el nuevo número
-
   if (!firstCard) {
     firstCard = card;
   } else {
     const segunda = card;
+
+    // ✅ Ahora sí contamos 1 movimiento por intento de par
+    movimientosRestantes--;
+    actualizarContadores();
+
     if (firstCard.dataset.url === segunda.dataset.url) {
       firstCard = null;
       matchedPairs++;
@@ -111,27 +131,12 @@ function manejarClick(card) {
         lockBoard = false;
       }, 1000);
     }
-  }
 
-  if (movimientosRestantes === 0 && matchedPairs < imagenes.length) {
-    clearInterval(temporizador);
-    mostrarFinal("lose");
-  }
-}
-
-
-function iniciarTemporizador() {
-  clearInterval(temporizador);
-  temporizador = setInterval(() => {
-    tiempoRestante--;
-
-    if (tiempoRestante <= 0) {
+    if (movimientosRestantes === 0 && matchedPairs < imagenes.length) {
       clearInterval(temporizador);
-      if (matchedPairs < imagenes.length) {
-        mostrarFinal("lose");
-      }
+      mostrarFinal("lose");
     }
-  }, 1000);
+  }
 }
 
 function mostrarFinal(resultado) {
