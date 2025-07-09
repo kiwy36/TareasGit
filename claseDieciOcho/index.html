@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Juego de Memoria</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +19,12 @@
 
   <button id="start" style="display:none;">Comenzar juego</button>
   <div class="game-board" id="tablero"></div>
+  <p id="tiempo" style="display:none;">Tiempo restante: --</p>
+  <p id="movimientos" style="display:none;">Movimientos restantes: --</p>
 
-  <script src="script.js"></script>
+  <button id="reiniciar" style="display:none;">Volver a jugar</button>
+
+
+  <script src="./scriptDos.js"></script>
 </body>
 </html>
