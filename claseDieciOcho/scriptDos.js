@@ -113,6 +113,10 @@ function manejarClick(card) {
     actualizarContadores();
 
     if (firstCard.dataset.url === segunda.dataset.url) {
+      // ✅ Agregamos clase para animación de brillo
+      firstCard.classList.add('matched');
+      segunda.classList.add('matched');
+      
       firstCard = null;
       matchedPairs++;
 
@@ -138,6 +142,7 @@ function manejarClick(card) {
     }
   }
 }
+
 
 function mostrarFinal(resultado) {
   $tiempo.textContent = `Tiempo restante: ${tiempoRestante}s`;
